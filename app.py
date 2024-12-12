@@ -14,3 +14,9 @@ async def model_1(languagetype:Language_Type):
     
     elif languagetype == Language_Type["chaines"]:
         return "chaines language"
+    
+    if languagetype == Language_Type["japnies"]:
+        return "japnies language"
+    
+    elif languagetype == Language_Type["korean"]:
+        return "korean language"
