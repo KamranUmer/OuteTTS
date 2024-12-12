@@ -1,3 +1,6 @@
 speech_env/
 model.pt
 output.wav
+output*
+__pycache__
+test/*
