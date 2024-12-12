@@ -1,7 +1,7 @@
 import outetts
 
 
-def config(languagetype,speakertype,inputtxt):
+def model_config_setting(languagetype,speakertype,inputtxt):
     model_config = outetts.HFModelConfig_v1(
         model_path="OuteAI/OuteTTS-0.2-500M",
         # language="en",  
