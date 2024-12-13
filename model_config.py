@@ -15,7 +15,6 @@ def model_config_setting(languagetype,speakertype,inputtxt):
     # speaker = interface.load_default_speaker(name="male_1")
     speaker = interface.load_default_speaker(name=speakertype)
 
-
     output = interface.generate(
         # text="Speech synthesis is the artificial production of human speech. A computer system used for this purpose is called a speech synthesizer, and it can be implemented in software or hardware products.",
         text = inputtxt,
@@ -25,7 +24,7 @@ def model_config_setting(languagetype,speakertype,inputtxt):
         speaker=speaker,
     )
 
-    output.save("outputsound_function.wav")
+    output.save("outputsound_function1.wav")
 
 
 
