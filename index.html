@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Tune Selector</title>
+</head>
+<body>
+    <h1>Language Tune Selector</h1>
+
+    <!-- Dropdown for selecting language -->
+    <label for="language">Select Language:</label>
+    <select id="language">
+        <option value="english">English</option>
+        <option value="chaines">Chinese</option>
+        <option value="japnies">Japanese</option>
+        <option value="korean">Korean</option>
+    </select>
+
+    <!-- Input field for user text -->
+    <label for="inputText">Enter Input Text:</label>
+    <input type="text" id="inputText" placeholder="Type something here...">
+
+    <!-- Submit button -->
+    <button id="submitBtn">Submit</button>
+
+    <!-- Display the API response -->
+    <div id="response"></div>
+
+    <script>
+        // Add event listener for button click
+        document.getElementById("submitBtn").addEventListener("click", async function() {
+            // Get selected language and user input text
+            const language = document.getElementById("language").value;
+            const inputText = document.getElementById("inputText").value;
+
+            // Validate input
+            if (!inputText) {
+                alert("Please enter some text!");
+                return;
+            }
+
+            // API URL
+            const apiUrl = `http://127.0.0.1:8000/languages/${language}?inputtext=${encodeURIComponent(inputText)}`;
+
+            try {
+                // Call the API
+                const response = await fetch(apiUrl, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+
+                // Handle the response
+                if (response.ok) {
+                    const data = await response.json();
+                    document.getElementById("response").innerText = JSON.stringify(data, null, 2);
+                } else {
+                    document.getElementById("response").innerText = `Error: ${response.status}`;
+                }
+            } catch (error) {
+                document.getElementById("response").innerText = `Error: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>

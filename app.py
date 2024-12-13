@@ -3,9 +3,20 @@ from fastapi import FastAPI
 from languages import Language_Type
 from tunes import TuneType
 from model_config import model_config_setting
+from fastapi.middleware.cors import CORSMiddleware
 
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Replace "*" with your frontend URL in production (e.g., ["http://localhost:5500"])
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
 
 
 def select_tune(languagetype):

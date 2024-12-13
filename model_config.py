@@ -24,7 +24,7 @@ def model_config_setting(languagetype,speakertype,inputtxt):
         speaker=speaker,
     )
 
-    output.save("outputsound_function1.wav")
+    output.save("outputsound_function2.wav")
 
 
 
