@@ -25,4 +25,8 @@ def model_config_setting(languagetype,speakertype,inputtxt):
         speaker=speaker,
     )
 
-    output.save("outputsound.wav")
+    output.save("outputsound_function.wav")
+
+
+
+# model_config_setting("en", "male_1", "Yes, you can consolidate these into one class and have separate functions to return the different tune types This can make the code more organized and reusable. Here's how you can structure it")

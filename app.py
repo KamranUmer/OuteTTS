@@ -1,22 +1,53 @@
 from fastapi import FastAPI
 # from model import model_config_setting
 from languages import Language_Type
-from tunes import Tune_chi_Type, Tune_e_Type, Tune_jp_Type, Tune_ko_Type
+from tunes import TuneType
 from model_config import model_config_setting
 
 
 app = FastAPI()
 
-@app.get("/model/{model_name}")
-async def model_1(languagetype:Language_Type):
+
+def select_tune(languagetype):
     if languagetype == Language_Type["english"]:
-        return "english language"
+        return {"Available tunes for english ": TuneType.get_tune_e()}
+
+    elif languagetype == Language_Type["chaines"]:
+        return {"Available tunes for chaines ": TuneType.get_tune_chi()}
+
+    elif languagetype == Language_Type["japnies"]:
+        return {"Available tunes for Japnies " : TuneType.get_tune_jp()}
+
+    elif languagetype == Language_Type["korean"]:
+        return {"Available tunes for korean " : TuneType.get_tune_ko()}
+
+
+
+@app.get("/languages/{language}")
+async def language_fnc(languagetype:Language_Type):
+    if languagetype == Language_Type["english"]:
+        tune = select_tune("english")
+        return tune
     
     elif languagetype == Language_Type["chaines"]:
-        return "chaines language"
-    
-    if languagetype == Language_Type["japnies"]:
-        return "japnies language"
+        tune = select_tune("chaines")
+        return tune
+
+    elif languagetype == Language_Type["japnies"]:
+        tune = select_tune("japnies")
+        return tune
     
     elif languagetype == Language_Type["korean"]:
-        return "korean language"
+        tune = select_tune("korean")
+        return tune
+
+    else:
+        return{"error ": "Tune type is not supported"}
+
+
+
+# @app.get("/oute_model/{model}")
+# async def model_fnc():
+#         model = model_config_setting()
+
+#         return 

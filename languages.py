@@ -6,3 +6,5 @@ class Language_Type(str, Enum):
     chaines = "chaines"
     japnies = "japnies"
     korean = "korean"
+
+
